@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="todo">
 <head>
-	<title>To DO list</title>
+	<title>To Do list</title>
 </head>
-<body ng-controller = "MainController">
-	<input ng-model = "name">
-	{{name}}
+<body ng-controller = "MainController as ctrl">
+	Items Form<br>
+	<input ng-model = "ctrl.newItem">
+	<button ng-click="ctrl.addItem()">Add</button><br>
+	
+	List
+	<li ng-repeat="item in ctrl.items">
+	{{item}}
+	<li ng-if="ctrl.newItem">{{ctrl.newItem}}</li>
+
 	<script src="angular.min.js" ></script>
 	<script src="app.js" ></script>
+
 </body>
 </html>
