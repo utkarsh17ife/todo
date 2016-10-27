@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(req, res){
-	res.send("<h1>hello from the other side<h1>");
+	res.send("hello from the other side");
 });
 
 app.use(express.static(__dirname + '/'));
