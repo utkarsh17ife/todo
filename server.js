@@ -8,7 +8,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res){
-	res.send("hello from the other side");
+	res.send("Received the request");
 });
 
 app.use(express.static(__dirname + '/'));

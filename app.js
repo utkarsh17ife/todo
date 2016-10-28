@@ -19,7 +19,7 @@ function MainController (TodoService){
 
 	ctrl.callToServer = function(){
 		console.log("call to server controller");
-		console.log(TodoService.getItems());
+		TodoService.getItems();
 	}
 
 };
@@ -41,10 +41,8 @@ function TodoService($http,ApiBasePath){
           method: "GET",
           url: (ApiBasePath + "/"),
         });	
-        console.log("call to server service");
-        return response;
-
-	}
+        console.log(response);
+	};
 	
 	service.viewItems = function(){
 		return items;
