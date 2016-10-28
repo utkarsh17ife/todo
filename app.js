@@ -3,30 +3,50 @@
 app = angular.module("todo",[]);
 
 app.controller('MainController',MainController)
-.service('todoService',todoService);
+.service('TodoService',TodoService)
+.constant('ApiBasePath', "https://todoserver.herokuapp.com");
 
-MainController.$inject = ['todoService'] 
-function MainController (todoService){
+MainController.$inject = ['TodoService'];
+function MainController (TodoService){
 	var ctrl = this;
 	
-	ctrl.items = todoService.viewItems();
+	ctrl.items = TodoService.viewItems();
 
 	ctrl.addItem = function(){
-		todoService.insertItems(ctrl.newItem);
+		TodoService.insertItems(ctrl.newItem);
 		ctrl.newItem = "";
 	}
+
+	ctrl.callToServer = function(){
+		console.log("call to server controller");
+		console.log(TodoService.getItems());
+	}
+
 };
 
 
-function todoService(){
-	var todo = this;
+TodoService.$inject = ['$http','ApiBasePath'];
+function TodoService($http,ApiBasePath){
+	var service = this;
 	var items = [];
 
-	todo.insertItems = function(newItem){
-		items.push(newItem);
-	};
+	// todo.insertItems = function(newItem){
+	// 	$http.get(ApiBasePath ,function(data){
 
-	todo.viewItems = function(){
+	// 	})
+	// 	items.push(newItem);
+	// };
+	service.getItems = function(){
+		var response = $http({
+          method: "GET",
+          url: (ApiBasePath + "/"),
+        });	
+        console.log("call to server service");
+        return response;
+
+	}
+	
+	service.viewItems = function(){
 		return items;
 	};
 };

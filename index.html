@@ -7,14 +7,14 @@
 	Items Form<br>
 	<input ng-model = "ctrl.newItem">
 	<button ng-click="ctrl.addItem()">Add</button><br>
-	
 	List
 	<li ng-repeat="item in ctrl.items">
 	{{item}}
 	<li ng-if="ctrl.newItem">{{ctrl.newItem}}</li>
 
+	<button ng-click="ctrl.callToServer()">call to server</button>
+
 	<script src="angular.min.js" ></script>
 	<script src="app.js" ></script>
-
 </body>
 </html>
