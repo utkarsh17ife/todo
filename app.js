@@ -40,8 +40,10 @@ function TodoService($http,ApiBasePath){
 		var response = $http({
           method: "GET",
           url: (ApiBasePath + "/"),
-        });	
-        console.log(response);
+        }).then(function (response){
+        	console.log(response);	
+        });
+        
 	};
 	
 	service.viewItems = function(){
