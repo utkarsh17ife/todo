@@ -1,11 +1,12 @@
 {
   "name": "todo",
-  "version": "1.0.1",
-  "description": "simple todo app",
+  "version": "1.0.2",
+  "description": "Simple todo app",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.14.0",
+    "body-parser": "^1.15.2",
     "mongoose": "^4.6.5",
+    "express": "^4.14.0",
     "http-server": "^0.9.0"
   },
   "devDependencies": {},
@@ -15,15 +16,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/utkarsh17ife/todo.git"
+    "url": "y"
   },
   "keywords": [
     "todo"
   ],
   "author": "utkarsh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/utkarsh17ife/todo/issues"
-  },
-  "homepage": "https://github.com/utkarsh17ife/todo#readme"
+  "license": "ISC"
 }
