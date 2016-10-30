@@ -1,23 +1,26 @@
 {
   "name": "todo",
-  "version": "1.0.0",
-  "description": "Simple todo list",
+  "version": "1.0.1",
+  "description": "simple todo app",
   "main": "server.js",
   "dependencies": {
     "express": "^4.14.0",
-    "http-server": "^0.9.0",
-    "mongoose": "^4.6.5"
+    "mongoose": "^4.6.5",
+    "http-server": "^0.9.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test",
+    "test": "none",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/utkarsh17ife/todo.git"
+    "url": "git+https://github.com/utkarsh17ife/todo.git"
   },
-  "author": "",
+  "keywords": [
+    "todo"
+  ],
+  "author": "utkarsh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/utkarsh17ife/todo/issues"

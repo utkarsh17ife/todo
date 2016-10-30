@@ -4,15 +4,25 @@
 	<title>To Do list</title>
 </head>
 <body ng-controller = "MainController as ctrl">
-	Items Form<br>
+<center>
+	Task Form<br>
 	<input ng-model = "ctrl.newItem">
 	<button ng-click="ctrl.addItem()">Add</button><br>
 	List
-	<li ng-repeat="item in ctrl.items">
-	{{item}}
-	<li ng-if="ctrl.newItem">{{ctrl.newItem}}</li>
+	<table>
+		<tr>
+			<th>Task Name</th>
+			<th>Done?</th>
+		</tr>
+		<tr ng-repeat="item in ctrl.items">
+			<td>{{item.name}}</td>
+			<td ng-if="!item.status"><button ng-click="ctrl.taskDone($index)">Done</button></td>
+			<td ng-if="item.status">Completed!</td>
+		</tr>
 
-	<button ng-click="ctrl.callToServer()">call to server</button>
+		<tr ng-if="ctrl.newItem"><td>{{ctrl.newItem}}</td></tr>
+	</table>
+<center>
 
 	<script src="angular.min.js" ></script>
 	<script src="app.js" ></script>
