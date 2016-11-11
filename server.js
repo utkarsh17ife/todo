@@ -57,8 +57,21 @@ app.put('/', function(req, res){
 		if(err)
 			res.send(err);
 		res.status(200).send(num);
+	});	
+});
+app.delete('/' function(req, res){
+	var id = req.body;
+	console.log(req.body);
+	Todo.find({_id:id}, function(err, todo){
+		if(err)
+			console.log(err);
+			throw err;
+		todo.remove(function(err){
+			if (err) 
+				throw err;
+			console.log("task is removed");
+		});
 	});
-	
 });
 app.use(express.static(__dirname + '/'));
 app.listen(process.env.PORT || 5000, function(){
