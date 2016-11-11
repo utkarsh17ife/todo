@@ -18,6 +18,7 @@
 			<td>{{item.name}}</td>
 			<td ng-if="!item.status"><button ng-click="ctrl.taskDone($index)">Done</button></td>
 			<td ng-if="item.status">Completed!</td>
+			<td ng-click="ctrl.taskRemove($index)">Remove!</td>
 		</tr>
 
 		<tr ng-if="ctrl.newItem"><td>{{ctrl.newItem}}</td></tr>
