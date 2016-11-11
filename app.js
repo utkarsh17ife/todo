@@ -39,7 +39,14 @@ function MainController (TodoService){
 			console.log(response)
 			ctrl.init();
 		});
-	}
+	};
+	ctrl.taskRemove= function(index){
+		var promise = TodoService.removeItem(ctrl.items[index]._id)
+		promise.then(function(reponse){
+			console.log(response);
+			ctrl.init();
+		});
+	};
 };
 
 TodoService.$inject = ['$http','ApiBasePath'];
@@ -61,7 +68,12 @@ function TodoService($http,ApiBasePath){
 	service.updateItems = function(updateObj){
 		var response = $http.put(ApiBasePath + "/", updateObj);
 		return response;
-	}
+	};
+	
+	service.removeItem = function(id){
+		var response = $http.delete(ApiBasePath + "/", id);
+		return response;
+	};
 
 };
 
