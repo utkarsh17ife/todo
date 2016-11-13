@@ -4,8 +4,8 @@ app = angular.module("todo",[]);
 
 app.controller('MainController',MainController)
 .service('TodoService',TodoService)
-//.constant('ApiBasePath', "https://todoserver.herokuapp.com");
-.constant('ApiBasePath', "http://127.0.0.1:5000");
+.constant('ApiBasePath', "https://todoserver.herokuapp.com");
+//.constant('ApiBasePath', "http://127.0.0.1:5000");
 
 
 MainController.$inject = ['TodoService'];
