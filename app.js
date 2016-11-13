@@ -77,7 +77,7 @@ function TodoService($http,ApiBasePath){
 		//var response = $http.delete(ApiBasePath + "/", {params : delObj});
 
 		var response = $http({
-			method: delete,
+			method: 'delete',
 			url: ApiBasePath + "/",
 			data:delObj
 		});
