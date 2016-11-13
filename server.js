@@ -48,6 +48,8 @@ app.post('/',function(req,res){
 });
 app.put('/', function(req, res){
 	var updateObj = req.body; 
+	console.log(req.headers);
+	console.log(req.body);
 	var uPropName = updateObj.uPropName; 
 	var update = {};
 	var condition = {};
@@ -59,18 +61,17 @@ app.put('/', function(req, res){
 		res.status(200).send(num);
 	});	
 });
-app.delete('/' function(req, res){
-	var id = req.body;
+app.delete('/' , function(req, res){
+	console.log(req.headers);
+	console.log("delete");
 	console.log(req.body);
-	Todo.find({_id:id}, function(err, todo){
+	console.log(req);
+	var id = req.body.id;
+	console.log(id);
+	Todo.remove({_id : id}, function(err, count){
 		if(err)
-			console.log(err);
 			throw err;
-		todo.remove(function(err){
-			if (err) 
-				throw err;
-			console.log("task is removed");
-		});
+		res.send("number of task removed is : " + count);
 	});
 });
 app.use(express.static(__dirname + '/'));

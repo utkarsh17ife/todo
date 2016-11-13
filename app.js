@@ -4,8 +4,8 @@ app = angular.module("todo",[]);
 
 app.controller('MainController',MainController)
 .service('TodoService',TodoService)
-.constant('ApiBasePath', "https://todoserver.herokuapp.com");
-//.constant('ApiBasePath', "http://127.0.0.1:5000");
+//.constant('ApiBasePath', "https://todoserver.herokuapp.com");
+.constant('ApiBasePath', "http://127.0.0.1:5000");
 
 
 MainController.$inject = ['TodoService'];
@@ -17,7 +17,6 @@ function MainController (TodoService){
 		var promise = TodoService.getItems();	
 		promise.then(function(response){
 			ctrl.items = response.data;
-			console.log(ctrl.items);
 		});
 	}
 	ctrl.init();
@@ -36,20 +35,22 @@ function MainController (TodoService){
 		};
 		var promise = TodoService.updateItems(updateObj);
 		promise.then(function(response){
-			console.log(response)
 			ctrl.init();
 		});
 	};
 	ctrl.taskRemove= function(index){
-		var promise = TodoService.removeItem(ctrl.items[index]._id)
+		var delObj = {'id' : ctrl.items[index]._id};
+		var promise = TodoService.removeItem(delObj);
 		promise.then(function(reponse){
-			console.log(response);
+			console.log(reponse);
 			ctrl.init();
 		});
 	};
 };
 
 TodoService.$inject = ['$http','ApiBasePath'];
+
+
 function TodoService($http,ApiBasePath){
 	var service = this;
 	var item = [];
@@ -66,15 +67,22 @@ function TodoService($http,ApiBasePath){
 	};	
 
 	service.updateItems = function(updateObj){
+		console.log(updateObj);
 		var response = $http.put(ApiBasePath + "/", updateObj);
 		return response;
 	};
 	
-	service.removeItem = function(id){
-		var response = $http.delete(ApiBasePath + "/", id);
+	service.removeItem = function(delObj){
+		console.log(delObj);
+		//var response = $http.delete(ApiBasePath + "/", {params : delObj});
+
+		var response = $http({
+			method: delete,
+			url: ApiBasePath + "/",
+			data:delObj
+		});
 		return response;
 	};
-
 };
 
 

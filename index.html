@@ -17,8 +17,8 @@
 		<tr ng-repeat="item in ctrl.items">
 			<td>{{item.name}}</td>
 			<td ng-if="!item.status"><button ng-click="ctrl.taskDone($index)">Done</button></td>
-			<td ng-if="item.status">Completed!</td>
-			<td ng-click="ctrl.taskRemove($index)">Remove!</td>
+			<td ng-if="item.status">Completed</td>
+			<td ng-click="ctrl.taskRemove($index)"><button>Remove</button></td>
 		</tr>
 
 		<tr ng-if="ctrl.newItem"><td>{{ctrl.newItem}}</td></tr>
